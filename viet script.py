@@ -3,7 +3,7 @@ import codecs
 
 # Sorts words by alphabetical order with the count as a secondary key
 def sort_words(x, y):
-    return compared(x[1], y[1]) or compared(y[0], x[0])
+    return cmp(x[1], y[1]) or cmp(y[0], x[0])
 
 # Words to be listed 
 Number = 50
@@ -18,8 +18,8 @@ for word in words_gen:
     words[word] = words.get(word, 0) + 1
 
 # Sorts the words 
-top_words = sorted(words.iteritems(), compared=sort_items, reverse=True)[:Number]
+top_words = sorted(words.iteritems(), cmp=sort_words, reverse=True)[:Number]
 
-# Prints out the top words in the file
+# Prints out the top N words
 for word, frequency in top_words:
     print "%s: %d" % (word, frequency)
